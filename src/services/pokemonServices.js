@@ -1,6 +1,5 @@
 const  repository = require('../repositories/pokemonRepository')
 const { validarDadosPokemon } = require('../models/pokemon');
-const { render } = require('@testing-library/react');
 
 function listarPokemon(){
     return repository.listarPokemon();
@@ -31,7 +30,7 @@ function atualizarPokemons(id, dados){
     const erro = validarDadosPokemon(dados);
     if(erro.length > 0){
         const erro = new Error(erro.join(', '));
-        erro.status(400)
+        erro.status = 400
         throw erro;
     }
     return repository.atualizarPokemons(id, dados)
